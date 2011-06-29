@@ -1,0 +1,24 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use App::Groonga::Wrapper;
+use Getopt::Long;
+
+my $config_path;
+GetOptions("config=s" => \$config_path);
+
+die "Configuration file $config_path not exists." unless -f $config_path;
+my $config;
+eval{
+	$config = do $config;
+};
+if($@){
+	die "Configuration file has errors: $@";
+}
+
+App::Groonga::Wrapper->new(
+	%$config;
+)->run();
+
+__END__
