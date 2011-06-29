@@ -46,11 +46,7 @@ has 'enable_commands_global' =>
 has 'acceptable_address' =>
 	( is => 'ro', isa => 'ArrayRef[Str]', default => sub { [] }, );
 
-my %valid_commands = map { $_ => 1 } qw(
-	cache_limit check clearlock column_create column_list column_remove define_selector
-	defrag delete dump load log_level log_put log_reopen quit select shutdown status
-	suggest table_create table_list table_remove view_add
-);
+my %valid_commands = map { $_ => 1 } @commands;
 
 sub run {
 	my $self = shift;

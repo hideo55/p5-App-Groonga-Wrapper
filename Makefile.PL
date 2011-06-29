@@ -13,6 +13,10 @@ author_tests 'xt';
 
 test_requires 'Test::More';
 test_requires 'Test::Fatal';
+test_requires 'Test::TCP';
+test_requires 'File::Which';
+test_requires 'Proc::Guard';
+
 auto_set_repository;
 auto_include;
 WriteAll;
